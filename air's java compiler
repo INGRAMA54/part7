@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class MachineCodeGenerator {
+  
+  public static void main(String[] args) {
+    
+    // Sample optimized intermediate code
+    List<String> optimizedCode = new ArrayList<String>();
+    optimizedCode.add("MOV EAX, 10");
+    optimizedCode.add("MOV EBX, 20");
+    optimizedCode.add("ADD EAX, EBX");
+    optimizedCode.add("MOV RESULT, EAX");
+
+    // Generate x86 assembly code
+    StringBuilder assemblyCode = new StringBuilder();
+    assemblyCode.append(".data\n");
+    assemblyCode.append("RESULT DWORD 0\n");
+    assemblyCode.append(".code\n");
+    assemblyCode.append("main PROC\n");
+    for (String instr : optimizedCode) {
+      assemblyCode.append(instr + "\n");
+    }
+    assemblyCode.append("ret\n");
+    assemblyCode.append("main ENDP\n");
+
+    // Print the generated x86 assembly code
+    System.out.println("Generated x86 assembly code:\n");
+    System.out.println(assemblyCode.toString());
+  }
+}
